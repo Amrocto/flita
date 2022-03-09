@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main()
+{
+    int x,i=0;
+    int m;
+    int arr[99];
+    int a;
+    printf("Введите сколько хотите чисел: ");
+    scanf("%d", &x); //x общее число элементов
+    while (x<=0) {
+        printf("Введите положительное число: ");
+        scanf("%d", &x);
+    }
+    printf("Введите все числа: \n");
+    while(i != x) {
+        printf("A[%d]=", i);
+        scanf("%d", &m); // значения элементов
+        arr[i] = m;
+        i++;
+    }
+  
+    printf("Сколько элементов хотите удалить? ");
+    scanf("%d", &a); //количество удаленных
+    for(a; a <= x; a--) {
+      printf("Введите какой из элементов хотите удалить\n");
+      scanf("%d", &i);
+            if (a <= 0) {
+        break;
+      }
+      
+      if (i <= x) {
+              printf("Элемент A[%d] со значением %d удален\n", i, arr[i]);
+      } else { 
+        printf("Error \n");
+          }
+    }
+    if (a >= x)  {
+      printf("Error");
+    }
+  if (a == 0) {
+    printf("the work is over");
+  }
+  
+    return 0;
+}
