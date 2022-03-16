@@ -1,46 +1,71 @@
+#include <stdbool.h>
 #include <stdio.h>
-
-int main()
-{
-    int x,i=0;
-    int m;
-    int arr[99];
-    int a;
-    printf("Введите сколько хотите чисел: ");
-    scanf("%d", &x); //x общее число элементов
-    while (x<=0) {
-        printf("Введите положительное число: ");
-        scanf("%d", &x);
-    }
-    printf("Введите все числа: \n");
-    while(i != x) {
-        printf("A[%d]=", i);
-        scanf("%d", &m); // значения элементов
-        arr[i] = m;
-        i++;
-    }
-  
-    printf("Сколько элементов хотите удалить? ");
-    scanf("%d", &a); //количество удаленных
-    for(a; a <= x; a--) {
-      printf("Введите какой из элементов хотите удалить\n");
-      scanf("%d", &i);
-            if (a <= 0) {
-        break;
+int main() {
+  bool c = true;
+  int b, f;
+  int x, i = 0;
+  int m;
+  int arr[99];
+  int brr[99];
+  int a;
+  while (c) {
+    printf("=======================================\n");
+    printf("1 - добавить элемент\n");
+    printf("2 - удалить элемент\n");
+    printf("3 - показать оставшееся и выйти с цикла\n");
+    printf("=======================================\n");
+    scanf("%d", &b);
+    if (b == 1) {
+      printf("Введите: до какого числа добавить элементы?: ");
+      scanf("%d", &x); // x общее число элементов
+      while (x <= 0) {
+        printf("!!!   Введите положительное число: ");
+        scanf("%d", &x); //флуд
       }
-      
-      if (i <= x) {
-              printf("Элемент A[%d] со значением %d удален\n", i, arr[i]);
-      } else { 
-        printf("Error \n");
-          }
+      printf("Введите все числа: \n");
+      while (i != x) {
+        printf("A[%d]=", i + 1);
+        scanf("%d", &m); // значения элементов
+        arr[i + 1] = m;
+        i++;
+      };
+    } else if (b == 2) {
+      printf("Сколько элементов хотите удалить? ");
+      scanf("%d", &a); //количество удаленных
+      f = 0;
+      for (a; a <= x && a > 0; a--) {
+        printf("Введите какой из элементов хотите удалить\n");
+        scanf("%d", &i);
+        f++;
+        brr[f] = i;
+        if (a < 0) {
+          printf("!!!   Введите положительное число\n");
+        } else if (i <= x) {
+          printf("Элемент A[%d] со значением %d удален\n", i, arr[i]);
+        } else {
+          printf("!!!   Error \n");
+        }
+      }
+      if (a >= x) {
+        printf("!!!   Введите число в пределах элементов\n");
+      }
+      if (a == 0) {
+        printf("the work is over\n");
+      }
+    } else if (b == 3) {
+      printf("Оставшиеся элементы:  \n");
+      f = 1;
+      for (int i = 1; i <= x; i++) {
+        if (i != brr[f]) {
+          printf("A[%d] = %d   ", i, arr[i]);
+        } else {
+          f++;
+        }
+      }
+      c = false;
+    } else {
+      printf("!!!   Введите предложенное вам число(1,2,3)\n");
     }
-    if (a >= x)  {
-      printf("Error");
-    }
-  if (a == 0) {
-    printf("the work is over");
   }
-  
-    return 0;
+  return 0;
 }
