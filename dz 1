@@ -2,12 +2,8 @@
 #include <stdio.h>
 int main() {
   bool c = true;
-  int b, f;
-  int x, i = 0;
-  int m;
-  int arr[99];
-  int brr[99];
-  int a;
+  int b, f, x, i = 0, a, m;
+  int arr[99], brr[99];
   while (c) {
     printf("=======================================\n");
     printf("1 - добавить элемент\n");
