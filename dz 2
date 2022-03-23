@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+int main(){
+ int sqr;
+ int A[101][101];
+ FILE* abb, *acc;
+ abb = fopen("abb.txt", "r");
+ scanf("%d", &sqr);
+ for (int i = 0; i < sqr; i++)
+    {
+ for (int j = 0; j < sqr; j++)
+        {
+ fscanf(abb, "%d", &A[i][j]);
+        }
+    }
+fclose(abb);
+
+ acc = fopen("acc.txt", "w");
+fprintf(acc, "graph {");
+ for (int i = 0; i < sqr; i++)
+        {
+ for (int j = 0; j < sqr; j++)
+            {
+ if (A[i][j] != 0)
+                {
+                 
+ fprintf(acc, "%d", i + 1);
+ fprintf(acc, " -- ");
+ fprintf(acc, "%d\n", j + 1);
+ if (A[i][j] > 1)
+                    {
+ fprintf(acc, " [not correct = %d", A[i][j]);
+                      
+ fprintf(acc, " ]\n ");
+                    }
+                }
+            }
+        }
+ fprintf(acc, " } ");
+}
