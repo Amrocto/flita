@@ -1,9 +1,18 @@
 #include <stdbool.h>
 #include <stdio.h>
+#include <malloc.h>
+
 int main() {
+  int n;
+  int *arr, *brr, *drr, *err;
+  puts("Введите размерность массива");
+  scanf("%d", &n);
+  arr = (int*)malloc(n * sizeof(int));
+  brr = (int*)malloc(n * sizeof(int));
+  drr = (int*)malloc(n * sizeof(int));
+  err = (int*)malloc(n * sizeof(int));
   bool c = true;
-  int b, f, x, i, a, y, q, asd, s;
-  int arr[99], brr[99], drr[99], err[99];
+  int b, f, x, i=0, a, y, q, asd, s;
   while (c) {
     puts("=======================================");
     puts("1 - добавить элемент");
@@ -16,8 +25,16 @@ int main() {
       puts("Введите: до какого числа добавить элементы?:");
       puts("Первый массив:");
       scanf("%d", &x); // x общее число элементов
+      while (x > n) {
+        printf ("Введите число в пределах массива: ");
+        scanf("%d", &x);
+      }
       puts("Второй массив:");
       scanf("%d", &y);
+      while (y > n) {
+        printf ("Введите число в пределах массива: ");
+        scanf("%d", &y);
+      }
       while (x <= 0) {
         puts("!!!   Введите положительное число: ");
         scanf("%d", &x); 
@@ -105,7 +122,7 @@ int main() {
     } else if (b == 4) {
       c = false;
       } else {     
-      puts("!!!   Введите предложенное вам число: (1,2,3)\n");
+      puts("!!!   Введите предложенное вам число: (1,2,3)\n"); //можно написать free(arr,например), чтобы очистить память, но компилятор это делает сам, поэтому не стал писать
     }
   }
   return 0;
